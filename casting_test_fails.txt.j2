@@ -1,0 +1,14 @@
+{{ value_notcasted }}
+{{ value_casted }}
+{% set casted_locally = value_notcasted |int %}
+{% set casted_twice = value_casted |int %}
+
+
+# Those all break during template preparation with 
+# {'msg': 'coercing to Unicode: need string or buffer, int found', 'failed': True}
+{{ value_casted + 10 }}
+{{ value_notcasted + 10 }}
+
+{{ 10 + value_casted  }}
+{{ 10 + value_notcasted  }}
+

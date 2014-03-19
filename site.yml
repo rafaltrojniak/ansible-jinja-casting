@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Calculate growth factor - not casted
+    set_fact: value_notcasted={{ groups[ 'all' ] | length }}
+  - name: Calculate growth factor - casted
+    set_fact: value_casted={{ groups[ 'all' ] | length |int }}
+  - name: Generate templates that work
+    template: src=casting_test.txt.j2 dest=/tmp/casting_test.txt
+  - name: Try to generate template that are broken
+    template: src=casting_test_fails.txt.j2 dest=/tmp/casting_test_fails.txt
+     

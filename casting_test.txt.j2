@@ -1,0 +1,23 @@
+{{ value_notcasted }}
+{{ value_casted }}
+{% set casted_locally = value_notcasted |int %}
+{% set casted_twice = value_casted |int %}
+
+# All of those works fine
+{{ casted_twice * 10 }} 
+{{ casted_locally * 10 }}
+{{ value_casted * 10 }} # This repeats string
+{{ value_notcasted * 10 }} # This repeats string
+
+{{ 10 * casted_twice  }}
+{{ 10 * casted_locally  }}
+{{ 10 * value_casted  }} # This repeats string
+{{ 10 * value_notcasted  }} # This repeats string
+
+
+{{ casted_twice + 10 }} 
+{{ casted_locally + 10 }}
+
+{{ 10 + casted_twice  }}
+{{ 10 + casted_locally  }}
+
